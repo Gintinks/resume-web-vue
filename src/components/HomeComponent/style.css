@@ -1,0 +1,45 @@
+@reference "tailwindcss";
+
+.home-section {
+  @apply py-16 md:py-24;
+}
+
+.home-container {
+  @apply flex flex-col-reverse gap-8 md:flex-row md:gap-0 md:items-center;
+}
+
+.left-section {
+  @apply md:w-1/2;
+}
+
+.description-text {
+  @apply mt-4 text-justify md:text-left;
+}
+
+.tech-stack-wrapper {
+  @apply mt-4;
+}
+
+.tech-stack-list {
+  @apply flex flex-wrap gap-4 mt-4;
+}
+
+.tech-stack-item {
+  @apply flex items-center gap-2 rounded-lg px-3 py-2;
+}
+
+.tech-stack-icon {
+  @apply w-5 h-5;
+}
+
+.right-section {
+  @apply flex justify-center md:w-1/2 md:justify-end md:mr-10 lg:mr-12;
+}
+
+.profile-image {
+  @apply rounded-full w-72 h-72  md:w-80 md:h-80 object-cover;
+}
+
+.home-buttons {
+  @apply flex flex-wrap mt-6 gap-4 md:gap-6;
+}

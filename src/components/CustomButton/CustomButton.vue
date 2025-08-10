@@ -1,0 +1,41 @@
+<template>
+  <button :class="buttonClasses" @click="handleClick">
+    <slot />
+  </button>
+</template>
+
+<script setup lang="ts">
+import { computed, defineProps, defineEmits } from 'vue'
+
+const props = defineProps<{
+  preset?: 'primary' | 'secondary' | 'cancel'
+  size?: 'small' | 'large'
+}>()
+
+const emit = defineEmits<{
+  (e: 'click', event: MouseEvent): void
+}>()
+
+const handleClick = (event: MouseEvent) => {
+  emit('click', event)
+}
+
+const baseClasses = 'rounded-md text-base font-medium transition-colors border-1'
+
+const presetClasses: Record<string, string> = {
+  primary: 'bg-red-500 text-white hover:bg-red-500/80',
+  secondary: 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white',
+  cancel: 'bg-gray-200 text-white border-gray-500',
+}
+
+const sizeClasses: Record<string, string> = {
+  small: 'py-2 px-4',
+  large: 'py-3 px-8',
+}
+
+const buttonClasses = computed(() => {
+  const preset = presetClasses[props.preset || 'primary']
+  const size = sizeClasses[props.size || 'large']
+  return `${baseClasses} ${size} ${preset}`
+})
+</script>

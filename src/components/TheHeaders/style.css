@@ -1,0 +1,44 @@
+@reference "tailwindcss";
+
+/* Header container */
+header {
+  position: fixed;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.container-header {
+  @apply flex items-center justify-between px-4 md:px-6 pb-4;
+}
+
+.navigation-wrapper {
+  @apply flex-1 justify-center gap-4 hidden md:flex;
+}
+
+/* Dropdown transition */
+.dropdown-enter-active {
+  @apply transition-all duration-300;
+}
+
+.dropdown-leave-active {
+  @apply transition-all duration-200;
+}
+
+.dropdown-enter-from {
+  @apply opacity-0 -translate-y-4;
+}
+
+.dropdown-enter-to {
+  @apply opacity-100 translate-y-0;
+}
+
+.dropdown-leave-from {
+  @apply opacity-100 translate-y-0;
+}
+
+.dropdown-leave-to {
+  @apply opacity-0 -translate-y-4;
+}
