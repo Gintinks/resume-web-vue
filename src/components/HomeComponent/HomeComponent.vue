@@ -3,16 +3,22 @@ import CustomText from '@/components/CustomText/CustomText.vue'
 import CustomButton from '../CustomButton/CustomButton.vue'
 
 // Import the profile image
-const profileImage = new URL('@/assets/images/profile.webp', import.meta.url).href
 
-const techStack = [
+interface TechStackItem {
+  name: string
+  icon: string
+}
+
+const profileImage: string = new URL('@/assets/images/profile.webp', import.meta.url).href
+
+const techStack: TechStackItem[] = [
   { name: 'React Native', icon: new URL('@/assets/icons/react.svg', import.meta.url).href },
   { name: 'NextJS', icon: new URL('@/assets/icons/next.svg', import.meta.url).href },
   { name: 'Vue', icon: new URL('@/assets/icons/vue.svg', import.meta.url).href },
   { name: 'TypeScript', icon: new URL('@/assets/icons/ts.svg', import.meta.url).href },
 ]
 
-function openPdf() {
+const openPdf = (): void => {
   window.open('Ignatius_Daniel_Ginting_Resume_2025.pdf', '_blank')
 }
 </script>

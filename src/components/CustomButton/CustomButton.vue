@@ -20,7 +20,7 @@ const handleClick = (event: MouseEvent) => {
   emit('click', event)
 }
 
-const baseClasses = 'rounded-md text-base font-medium transition-colors border-1'
+const baseClasses = 'rounded-md text-base font-medium transition-colors border-1 cursor-pointer'
 
 const presetClasses: Record<string, string> = {
   primary: 'bg-red-500 text-white hover:bg-red-500/80',
