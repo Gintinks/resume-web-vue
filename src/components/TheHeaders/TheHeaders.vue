@@ -14,6 +14,18 @@ function toggleDarkMode() {
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+const scrollToSection = (id: string) => {
+  console.log('rans')
+
+  const element = document.getElementById(id)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+}
 </script>
 
 <template>
@@ -25,22 +37,27 @@ function toggleMenu() {
       </div>
       <!-- Navigation -->
       <nav class="navigation-wrapper">
-        <CustomText>Home</CustomText>
-        <CustomText>About</CustomText>
-        <CustomText>Experience</CustomText>
-        <CustomText>Contact</CustomText>
+        <CustomText @click="scrollToSection('home-section')" clickable>Home</CustomText>
+        <CustomText @click="scrollToSection('projects-section')" clickable>Projects</CustomText>
+        <CustomText @click="scrollToSection('experiences-section')" clickable
+          >Experiences</CustomText
+        >
+        <CustomText @click="scrollToSection('contact-section')" clickable>Contact</CustomText>
       </nav>
       <!-- Toggle Button -->
       <div class="flex justify-end sm:flex-1">
         <div class="gap-2 flex">
-          <button
-            @click="toggleDarkMode"
-            class="w-9 h-9 rounded shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
-            aria-label="Toggle dark mode"
-          >
-            <span v-if="isDark" class="text-yellow-400">🌙</span>
-            <span v-else class="text-gray-800">☀️</span>
-          </button>
+          <!-- TODO: button for dark mode toggle (disabled for now)-->
+          <div>
+            <button
+              @click="toggleDarkMode"
+              class="hidden w-9 h-9 rounded shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
+              aria-label="Toggle dark mode"
+            >
+              <span v-if="isDark" class="text-yellow-400">🌙</span>
+              <span v-else class="text-gray-800">☀️</span>
+            </button>
+          </div>
           <button
             class="group inline-flex md:hidden w-9 h-9 text-slate-800 bg-white text-center items-center justify-center shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
             :aria-pressed="isMenuOpen"
@@ -84,10 +101,12 @@ function toggleMenu() {
         v-if="isMenuOpen"
         class="md:hidden bg-white dark:bg-gray-800 shadow-lg rounded mt-2 px-4 py-2 flex flex-col gap-2 border-t border-gray-100"
       >
-        <CustomText>Home</CustomText>
-        <CustomText>About</CustomText>
-        <CustomText>Experience</CustomText>
-        <CustomText>Contact</CustomText>
+        <CustomText @click="scrollToSection('home-section')" clickable>Home</CustomText>
+        <CustomText @click="scrollToSection('projects-section')" clickable>Projects</CustomText>
+        <CustomText @click="scrollToSection('experiences-section')" clickable
+          >Experiences</CustomText
+        >
+        <CustomText @click="scrollToSection('contact-section')" clickable>Contact</CustomText>
       </div>
     </Transition>
   </header>

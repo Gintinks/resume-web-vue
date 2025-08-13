@@ -1,11 +1,8 @@
 @reference "tailwindcss";
 
-.home-container {
-  @apply flex flex-col-reverse gap-8 md:flex-row md:gap-0 md:items-center;
-}
 
-.left-section {
-  @apply md:w-1/2;
+.contact-wrapper {
+  @apply flex flex-col gap-8 md:flex-row md:gap-0 md:items-center mt-12;
 }
 
 .description-text {
