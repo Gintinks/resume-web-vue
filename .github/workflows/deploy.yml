@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # ensure the action has credentials to push commits
-          token: ${{ secrets.RESUME_TOKEN }}
+          # use the built-in workflow token to give the runner credentials for git
+          token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
       - name: Use Node.js
@@ -33,7 +33,9 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # explicit token input name used by the action
-          access_token: ${{ secrets.RESUME_TOKEN }}
+          # first try the built-in token; if your org blocks it, provide a PAT
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # optional: personal token (PAT) stored as a repo secret; keep name RESUME_TOKEN
+          personal_token: ${{ secrets.RESUME_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
