@@ -1,6 +1,13 @@
 <template>
   <p
-    :class="[fontClass, colorClass, customClass, clickable ? 'cursor-pointer' : '']"
+    :class="[
+      fontClass,
+      colorClass,
+      customClass,
+      clickable ? 'cursor-pointer' : '',
+      'whitespace-normal',
+      'overflow-visible',
+    ]"
     @click="handleClick"
   >
     <slot />

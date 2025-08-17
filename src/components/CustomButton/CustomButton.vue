@@ -8,7 +8,7 @@
 import { computed, defineProps, defineEmits } from 'vue'
 
 const props = defineProps<{
-  preset?: 'primary' | 'secondary' | 'cancel'
+  preset?: 'primary' | 'secondary' | 'ternary' | 'cancel'
   size?: 'small' | 'large'
 }>()
 
@@ -25,6 +25,7 @@ const baseClasses = 'rounded-md text-base font-medium transition-colors border-1
 const presetClasses: Record<string, string> = {
   primary: 'bg-red-500 text-white hover:bg-red-500/80',
   secondary: 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white',
+  ternary: 'border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white',
   cancel: 'bg-gray-200 text-black border-gray-300',
 }
 
