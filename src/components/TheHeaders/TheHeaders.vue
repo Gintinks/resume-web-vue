@@ -1,10 +1,46 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import CustomText from '@/components/CustomText/CustomText.vue'
 import Helper from '@/utils/helper'
+import { profileImage } from '@/assets/images'
 
 const isDark = ref(localStorage.getItem('theme') === 'dark')
 const isMenuOpen = ref(false)
+
+// Header hide/show on mobile when scrolling
+const isHeaderHidden = ref(false)
+let lastScrollY = 0
+let isMobile = false
+let mq: MediaQueryList | null = null
+
+function updateIsMobile() {
+  mq = window.matchMedia('(max-width: 767px)')
+  isMobile = mq.matches
+}
+
+function onScroll() {
+  if (!isMobile) return
+  const current = window.scrollY || window.pageYOffset
+  const threshold = 50 // don't hide immediately on small scrolls
+
+  if (current <= threshold) {
+    isHeaderHidden.value = false
+  } else if (current > lastScrollY && current > threshold && !isMenuOpen.value) {
+    // scrolling down
+    isHeaderHidden.value = true
+  } else if (current < lastScrollY) {
+    // scrolling up
+    isHeaderHidden.value = false
+  }
+
+  lastScrollY = current
+}
+
+function onResizeListener() {
+  updateIsMobile()
+  // ensure header visible when switching to desktop
+  if (!isMobile) isHeaderHidden.value = false
+}
 
 function toggleDarkMode() {
   isDark.value = !isDark.value
@@ -27,12 +63,28 @@ function handleNavClick(target: string) {
   Helper.scrollToSection(target)
   isMenuOpen.value = false
 }
+
+onMounted(() => {
+  updateIsMobile()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('resize', onResizeListener)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('resize', onResizeListener)
+})
 </script>
 
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header--hidden': isHeaderHidden }">
     <div class="container container-header">
-      <div class="flex-1">
+      <div class="flex-1 flex items-center gap-2">
+        <img
+          :src="profileImage"
+          alt="Ignatius Daniel Y T A Ginting"
+          class="w-9 h-9 rounded object-cover"
+        />
         <CustomText preset="headline-6-bold">Daniel's Resume</CustomText>
       </div>
 
@@ -42,6 +94,8 @@ function handleNavClick(target: string) {
           :key="item.target"
           clickable
           @click="handleNavClick(item.target)"
+          preset="body-1-semibold"
+          custom-class="hover:text-blue-500"
         >
           {{ item.label }}
         </CustomText>
@@ -102,6 +156,7 @@ function handleNavClick(target: string) {
           :key="item.target"
           clickable
           @click="handleNavClick(item.target)"
+          preset="body-1-semibold"
         >
           {{ item.label }}
         </CustomText>

@@ -3,6 +3,7 @@ import ContactComponent from './ContactComponent/ContactComponent.vue'
 import ExperienceComponent from './ExperienceComponent/ExperienceComponent.vue'
 import HomeComponent from './HomeComponent/HomeComponent.vue'
 import ProjectsComponent from './ProjectsComponent/ProjectsComponent.vue'
+import TheFooter from './TheFooter/TheFooter.vue'
 import TheHeaders from './TheHeaders/TheHeaders.vue'
 </script>
 
@@ -14,4 +15,5 @@ import TheHeaders from './TheHeaders/TheHeaders.vue'
     <ExperienceComponent />
     <ContactComponent />
   </div>
+  <TheFooter />
 </template>

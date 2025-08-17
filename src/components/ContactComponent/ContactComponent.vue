@@ -27,8 +27,8 @@ const contacts: Contact[] = [
   <section id="contact-section">
     <div class="container">
       <div class="max-w-2xl text-center justify-self-center">
-        <CustomText preset="headline-1" customClass="mb-4">Contact me</CustomText>
-        <CustomText preset="body-1-regular"
+        <CustomText preset="headline-2" customClass="mb-4">Contact me</CustomText>
+        <CustomText preset="headline-6-regular" color="secondary"
           >I'm always open to discussing new opportunities, interesting projects, or just having a
           chat about technology.</CustomText
         >
@@ -44,7 +44,7 @@ const contacts: Contact[] = [
         </div>
 
         <div class="basis-3/5 text-center md:text-left">
-          <CustomText preset="headline-4-medium" customClass="mb-4">Let's Connect</CustomText>
+          <CustomText preset="headline-6-bold" customClass="mb-4">Let's Connect</CustomText>
           <CustomText preset="body-1-regular"
             >Feel free to reach out if you'd like to discuss potential collaborations, have
             questions about my work, or just want to say hello!</CustomText

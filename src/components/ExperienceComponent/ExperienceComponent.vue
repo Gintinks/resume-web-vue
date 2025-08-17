@@ -57,6 +57,19 @@ const experiences: Experience[] = [
     ],
   },
 ]
+
+// Map employment type to background classes
+const employmentBgMap: Record<string, string> = {
+  'Full-time': 'bg-blue-200/60',
+  Internship: 'bg-green-200/60',
+  Contract: 'bg-red-200/60',
+  'Part-time': 'bg-indigo-200/60',
+}
+
+const getEmploymentBg = (type?: string) => {
+  if (!type) return 'bg-gray-200/60'
+  return employmentBgMap[type] ?? 'bg-gray-200/60'
+}
 </script>
 
 <template>
@@ -66,9 +79,10 @@ const experiences: Experience[] = [
   >
     <div class="container">
       <div class="max-w-2xl text-center justify-self-center">
-        <CustomText preset="headline-1" customClass="mb-4">Experiences</CustomText>
-        <CustomText preset="body-1-regular">
-          My professional journey in mobile development and software engineering.
+        <CustomText preset="headline-2" customClass="mb-4">Experiences</CustomText>
+        <CustomText preset="headline-6-regular" color="secondary">
+          My professional journey as a software engineer from internships to full-time roles,
+          showcasing my growth and contributions in various projects.
         </CustomText>
       </div>
 
@@ -104,7 +118,9 @@ const experiences: Experience[] = [
                   </div>
                   <CustomText preset="headline-6-medium">{{ exp.company }}</CustomText>
                 </div>
-                <div class="p-2 bg-blue-200/60 rounded-xl w-full sm:w-auto">
+                <div
+                  :class="['p-2 rounded-xl w-full sm:w-auto', getEmploymentBg(exp.employmentType)]"
+                >
                   <CustomText preset="body-1-regular" class="text-center">{{
                     exp.employmentType
                   }}</CustomText>

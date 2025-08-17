@@ -31,12 +31,12 @@ const techStack: TechStackItem[] = [
       <div class="left-section">
         <CustomText preset="headline-1">Hi, I am</CustomText>
         <CustomText
-          preset="headline-2"
+          preset="headline-1"
           custom-class="bg-gradient-to-r from-[#2563EB] to-[#DC2626] bg-clip-text text-transparent"
           >Ignatius Daniel Y T A Ginting</CustomText
         >
 
-        <CustomText preset="body-1-regular" color="secondary" custom-class="description-text">
+        <CustomText preset="headline-6-regular" color="secondary" custom-class="description-text">
           Software Engineer with 3+ years of professional experience, specializing in Front-end
           technologies. Consistently delivers high-quality, scalable, and user-centric mobile and
           web applications. Brawijaya University Software Engineering graduate, experienced in
