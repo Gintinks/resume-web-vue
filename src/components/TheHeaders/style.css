@@ -11,6 +11,24 @@ header {
   z-index: 99;
 }
 
+/* Hide header on scroll down for mobile */
+@media (max-width: 767px) {
+  .header--hidden {
+    transform: translateY(-110%);
+    transition:
+      transform 200ms ease-in-out,
+      opacity 150ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  header {
+    transition:
+      transform 200ms ease-in-out,
+      opacity 150ms ease-in-out;
+  }
+}
+
 .container-header {
   @apply flex items-center justify-between px-4 md:px-6 pb-4;
 }

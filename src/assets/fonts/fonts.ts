@@ -1,6 +1,8 @@
 export const fontConfig = {
-  'headline-1': 'text-[32px] leading-[40px] font-medium font-inter tracking-[-0.5px]',
-  'headline-2': 'text-[28px] leading-[36px] font-medium font-inter',
+  'headline-1':
+    'text-3xl md:text-4xl lg:text-5xl leading-[40px] md:leading-[48px] lg:leading-[56px] font-bold font-inter',
+  'headline-2':
+    'text-2xl md:text-3xl lg:text-4xl leading-[32px] md:leading-[40px] lg:leading-[48px] font-bold font-inter',
   'headline-3': 'text-[24px] leading-[32px] font-medium font-inter',
   'headline-4-medium': 'text-[22px] leading-[30px] font-medium font-inter',
   'headline-4-regular': 'text-[22px] leading-[30px] font-normal font-inter',

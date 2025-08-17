@@ -1,5 +1,11 @@
 import { AIAPlusIcon, BlanjalokaIcon, DLHIcon } from '@/assets/icons'
-import { AIAPlusImage2, BlanjalokaImage, DLHImage } from '@/assets/images'
+import {
+  AIAPlusImage2,
+  BlanjalokaImage,
+  DLHImage,
+  PortfolioIcons,
+  PortfolioImage,
+} from '@/assets/images'
 
 export interface ProjectUrl {
   name: string
@@ -22,7 +28,7 @@ export const projects: Project[] = [
   {
     title: 'AIA+ Singapore',
     description:
-      'AIA+ Singapore is a superapp designed to be a go to app for all AIA Insurance services in Singapore. I worked on the mobile app development using React Native, integrating various features and functionalities to enhance user experience. Other than that, I also assisted the web team in developing and maintaining the AIA+ Singapore website using Next.js.',
+      "AIA+ Singapore is a superapp that serves as the central hub for all AIA Insurance services in Singapore. I was part of the core mobile team from the start, developing major modules and features with React Native to shape the app's foundation. In addition, I contributed to the web team for nearly a year, assisting in building new features and resolving bugs for the AIA+ Singapore website using Next.js.",
     startDate: new Date(2023, 5),
     image: AIAPlusImage2,
     icon: AIAPlusIcon,
@@ -39,7 +45,7 @@ export const projects: Project[] = [
   {
     title: 'SIMSAT',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'SIMSAT is a data management system designed to facilitate the management of household waste in Batu city. I was involved in the development of this system using React and TailwindCSS, focusing on creating a user-friendly interface and efficient data handling while working with backend to integrate data to AWS infrastructure.',
     startDate: new Date(2022, 1),
     endDate: new Date(2022, 7),
     image: DLHImage,
@@ -50,7 +56,7 @@ export const projects: Project[] = [
   {
     title: 'Blanjaloka',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Blanjaloka is an e-commerce platform that connects local sellers with buyers in Indonesia. I played a key role in developing the front-end using JQuery, creating interfaces and functions for customer platform.',
     startDate: new Date(2021, 7),
     endDate: new Date(2022, 1),
     image: BlanjalokaImage,
@@ -61,11 +67,11 @@ export const projects: Project[] = [
   {
     title: 'Portfolio Website',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'My personal portfolio website showcases my skills, projects, and experiences as a software developer. It is built using Vue.js, TypeScript, and TailwindCSS, providing a modern and responsive design.',
     startDate: new Date(2023, 5),
     endDate: new Date(2023, 5),
-    image: 'https://placehold.co/600x400',
-    icon: AIAPlusIcon,
+    image: PortfolioImage,
+    icon: PortfolioIcons,
     tags: ['Vue', 'TypeScript', 'TailwindCSS'],
     url: [
       { name: 'Website', link: 'home-section', type: 'scroll' },

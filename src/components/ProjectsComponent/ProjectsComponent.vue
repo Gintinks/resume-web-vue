@@ -45,8 +45,8 @@ const visibleProjects = computed(() =>
   <section id="projects-section">
     <div class="container">
       <div class="projects-header">
-        <CustomText preset="headline-1" customClass="mb-4">Projects</CustomText>
-        <CustomText preset="body-1-regular">
+        <CustomText preset="headline-2" customClass="mb-4">Projects</CustomText>
+        <CustomText preset="headline-6-regular" color="secondary">
           Here are some of the projects I've worked on, showcasing my expertise in mobile
           development and software engineering.
         </CustomText>
@@ -65,8 +65,8 @@ const visibleProjects = computed(() =>
             <div class="project-header">
               <img :src="project.icon" alt="Project Icon" class="project-icon" />
               <div>
-                <CustomText preset="headline-5-medium">{{ project.title }}</CustomText>
-                <CustomText preset="body-1-regular" color="muted">
+                <CustomText preset="body-2-semibold">{{ project.title }}</CustomText>
+                <CustomText preset="body-2-regular" color="muted">
                   {{ Helper.formatDate(project.startDate) }} -
                   {{ Helper.formatDate(project.endDate) }}
                 </CustomText>
