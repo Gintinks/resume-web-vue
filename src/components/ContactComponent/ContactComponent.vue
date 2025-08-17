@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { DownloadsIcon, LinkedInIcon, MailIcon, MessageIcon } from '@/assets/icons'
 import CustomText from '@/components/CustomText/CustomText.vue'
+import Helper from '@/utils/helper'
 
 interface Contact {
   name: string
@@ -20,10 +21,6 @@ const contacts: Contact[] = [
     url: 'https://www.linkedin.com/in/ignatius-daniel-ginting-945210205/',
   },
 ]
-
-const handleContactClick = (contact: Contact) => {
-  window.open(contact.url, '_blank')
-}
 </script>
 
 <template>
@@ -57,7 +54,7 @@ const handleContactClick = (contact: Contact) => {
               v-for="contact in contacts"
               :key="contact.name"
               class="group flex p-4 bg-gray-100 rounded-xl gap-4 cursor-pointer items-center"
-              @click="handleContactClick(contact)"
+              @click="Helper.handleOpenTab(contact.url)"
             >
               <div class="p-2 bg-blue-200/60 rounded-xl group-hover:bg-blue-200">
                 <img :src="contact.icon" :alt="contact.name" class="tech-stack-icon" />

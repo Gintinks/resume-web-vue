@@ -2,6 +2,7 @@
 import CustomText from '@/components/CustomText/CustomText.vue'
 import CustomButton from '../CustomButton/CustomButton.vue'
 import { NextIcon, ReactIcon, TypeScriptIcon, VueIcon } from '@/assets/icons'
+import Helper from '@/utils/helper'
 
 // Import the profile image
 
@@ -18,10 +19,6 @@ const techStack: TechStackItem[] = [
   { name: 'Vue', icon: VueIcon },
   { name: 'TypeScript', icon: TypeScriptIcon },
 ]
-
-const openPdf = (): void => {
-  window.open('Ignatius_Daniel_Ginting_Resume_2025.pdf', '_blank')
-}
 </script>
 
 <template>
@@ -63,10 +60,13 @@ const openPdf = (): void => {
         </div>
 
         <div class="home-buttons">
-          <CustomButton>
+          <CustomButton @click="Helper.scrollToSection('projects-section')">
             <CustomText color="none">View Projects</CustomText>
           </CustomButton>
-          <CustomButton preset="secondary" @click="openPdf">
+          <CustomButton
+            preset="secondary"
+            @click="Helper.handleOpenTab('Ignatius_Daniel_Ginting_Resume_2025.pdf')"
+          >
             <CustomText color="none">Download Resume</CustomText>
           </CustomButton>
         </div>

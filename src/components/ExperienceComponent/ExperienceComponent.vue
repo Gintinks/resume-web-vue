@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { CalendarIcon, ClockIcon } from '@/assets/icons'
 import CustomText from '@/components/CustomText/CustomText.vue'
+import Helper from '@/utils/helper'
 
 interface Experience {
   company: string
@@ -16,7 +17,7 @@ const experiences: Experience[] = [
   {
     company: 'AIA Singapore',
     icon: new URL('@/assets/images/aia.png', import.meta.url).href,
-    startDate: new Date(2023, 3),
+    startDate: new Date(2023, 2),
     employmentType: 'Full-time',
     role: 'Software Engineer',
     achievements: [
@@ -32,8 +33,8 @@ const experiences: Experience[] = [
   {
     company: 'Environmental Office of Batu City, Malang',
     icon: new URL('@/assets/images/dlh.png', import.meta.url).href,
-    startDate: new Date(2022, 2),
-    endDate: new Date(2022, 8),
+    startDate: new Date(2022, 1),
+    endDate: new Date(2022, 7),
     employmentType: 'Internship',
     role: 'Frontend Developer',
     achievements: [
@@ -45,8 +46,8 @@ const experiences: Experience[] = [
   {
     company: 'Citiasia Inc.',
     icon: new URL('@/assets/images/citiasia.png', import.meta.url).href,
-    startDate: new Date(2021, 8),
-    endDate: new Date(2022, 2),
+    startDate: new Date(2021, 7),
+    endDate: new Date(2022, 1),
     employmentType: 'Internship',
     role: 'Frontend Developer',
     achievements: [
@@ -56,22 +57,6 @@ const experiences: Experience[] = [
     ],
   },
 ]
-
-const formatDuration = (startDate: Date, endDate?: Date): string => {
-  const effectiveEndDate = endDate ?? new Date()
-
-  const totalMonths =
-    (effectiveEndDate.getFullYear() - startDate.getFullYear()) * 12 +
-    (effectiveEndDate.getMonth() - startDate.getMonth())
-
-  const years = Math.floor(totalMonths / 12)
-  const months = totalMonths % 12
-
-  const yearStr = years > 0 ? `${years} year${years > 1 ? 's' : ''}` : ''
-  const monthStr = months > 0 ? `${months} month${months > 1 ? 's' : ''}` : ''
-
-  return [yearStr, monthStr].filter(Boolean).join(' ')
-}
 </script>
 
 <template>
@@ -135,25 +120,15 @@ const formatDuration = (startDate: Date, endDate?: Date): string => {
                   <div class="flex items-center gap-2">
                     <img :src="CalendarIcon" alt="calendar" class="tech-stack-icon fill-gray-500" />
                     <CustomText preset="body-1-regular" color="muted">
-                      {{
-                        exp.startDate.toLocaleString('default', { month: 'short', year: 'numeric' })
-                      }}
-                      -
-                      {{
-                        exp.endDate
-                          ? exp.endDate.toLocaleString('default', {
-                              month: 'short',
-                              year: 'numeric',
-                            })
-                          : 'Present'
-                      }}
+                      {{ Helper.formatDate(exp.startDate) }} -
+                      {{ Helper.formatDate(exp.endDate) }}
                     </CustomText>
                   </div>
 
                   <div class="flex items-center gap-2">
                     <img :src="ClockIcon" alt="clock" class="tech-stack-icon fill-gray-500" />
                     <CustomText preset="body-1-regular" color="muted">
-                      {{ formatDuration(exp.startDate, exp.endDate) }}
+                      {{ Helper.formatDuration(exp.startDate, exp.endDate) }}
                     </CustomText>
                   </div>
                 </div>
