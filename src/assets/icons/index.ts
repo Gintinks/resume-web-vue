@@ -1,0 +1,16 @@
+export const CalendarIcon = new URL('./calendar.svg', import.meta.url).href
+export const ClockIcon = new URL('./clock.svg', import.meta.url).href
+export const DownloadsIcon = new URL('./downloads.svg', import.meta.url).href
+export const LinkedInIcon = new URL('./linkedin.svg', import.meta.url).href
+export const MailIcon = new URL('./mail.svg', import.meta.url).href
+export const MessageIcon = new URL('./message.svg', import.meta.url).href
+export const NextIcon = new URL('./next.svg', import.meta.url).href
+export const ReactIcon = new URL('./react.svg', import.meta.url).href
+export const TypeScriptIcon = new URL('./ts.svg', import.meta.url).href
+export const VueIcon = new URL('./vue.svg', import.meta.url).href
+export const AppleIcon = new URL('./apple.svg', import.meta.url).href
+export const GithubIcon = new URL('./github.svg', import.meta.url).href
+export const AndroidIcon = new URL('./android.svg', import.meta.url).href
+export const BlanjalokaIcon = new URL('./blanjaloka_icon.svg', import.meta.url).href
+export const DLHIcon = new URL('./dlh_batu_icon.svg', import.meta.url).href
+export const AIAPlusIcon = new URL('./aiaplus_icon.webp', import.meta.url).href

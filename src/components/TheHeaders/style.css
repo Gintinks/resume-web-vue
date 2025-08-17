@@ -2,12 +2,13 @@
 
 /* Header container */
 header {
+  @apply pt-4 bg-white dark:bg-gray-800;
   position: fixed;
   max-height: 100vh;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 99;
 }
 
 .container-header {
@@ -16,6 +17,39 @@ header {
 
 .navigation-wrapper {
   @apply flex-1 justify-center gap-4 hidden md:flex;
+}
+
+/* Dark mode toggle button */
+.dark-toggle-btn {
+  @apply hidden w-9 h-9 rounded transition
+         shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)]
+         hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)];
+}
+
+/* Mobile menu toggle button */
+.menu-toggle-btn {
+  @apply w-9 h-9 text-slate-800 bg-white text-center items-center justify-center transition
+         shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)]
+         hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)];
+}
+
+/* Hamburger icon bars */
+.menu-bar {
+  @apply origin-center transition-all duration-300;
+}
+.menu-bar-top {
+  @apply -translate-y-[5px] ease-[cubic-bezier(.5,.85,.25,1.1)];
+}
+.menu-bar-middle {
+  @apply ease-[cubic-bezier(.5,.85,.25,1.8)];
+}
+.menu-bar-bottom {
+  @apply translate-y-[5px] ease-[cubic-bezier(.5,.85,.25,1.1)];
+}
+
+/* Dropdown menu (mobile) */
+.dropdown-menu {
+  @apply md:hidden bg-white dark:bg-gray-800 shadow-lg rounded mt-2 px-4 py-2 flex flex-col gap-2 border-t border-gray-100;
 }
 
 /* Dropdown transition */

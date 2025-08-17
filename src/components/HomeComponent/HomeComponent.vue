@@ -1,25 +1,30 @@
 <script setup lang="ts">
 import CustomText from '@/components/CustomText/CustomText.vue'
 import CustomButton from '../CustomButton/CustomButton.vue'
+import { NextIcon, ReactIcon, TypeScriptIcon, VueIcon } from '@/assets/icons'
+import Helper from '@/utils/helper'
 
 // Import the profile image
-const profileImage = new URL('@/assets/images/profile.webp', import.meta.url).href
 
-const techStack = [
-  { name: 'React Native', icon: new URL('@/assets/icons/react.svg', import.meta.url).href },
-  { name: 'NextJS', icon: new URL('@/assets/icons/next.svg', import.meta.url).href },
-  { name: 'Vue', icon: new URL('@/assets/icons/vue.svg', import.meta.url).href },
-  { name: 'TypeScript', icon: new URL('@/assets/icons/ts.svg', import.meta.url).href },
-]
-
-function openPdf() {
-  window.open('Ignatius_Daniel_Ginting_Resume_2025.pdf', '_blank')
+interface TechStackItem {
+  name: string
+  icon: string
 }
+
+const profileImage: string = new URL('@/assets/images/profile.webp', import.meta.url).href
+
+const techStack: TechStackItem[] = [
+  { name: 'React Native', icon: ReactIcon },
+  { name: 'NextJS', icon: NextIcon },
+  { name: 'Vue', icon: VueIcon },
+  { name: 'TypeScript', icon: TypeScriptIcon },
+]
 </script>
 
 <template>
   <section
-    class="home-section bg-gradient-to-br from-[rgb(87,139,255,0.1)] via-[rgb(64,91,149,0.1)] to-[rgb(231,238,244,0.1)]"
+    id="home-section"
+    class="bg-gradient-to-br from-[rgb(87,139,255,0.1)] via-[rgb(64,91,149,0.1)] to-[rgb(231,238,244,0.1)]"
   >
     <div class="container home-container">
       <!-- Left Section -->
@@ -55,10 +60,13 @@ function openPdf() {
         </div>
 
         <div class="home-buttons">
-          <CustomButton>
+          <CustomButton @click="Helper.scrollToSection('projects-section')">
             <CustomText color="none">View Projects</CustomText>
           </CustomButton>
-          <CustomButton preset="secondary" @click="openPdf">
+          <CustomButton
+            preset="secondary"
+            @click="Helper.handleOpenTab('Ignatius_Daniel_Ginting_Resume_2025.pdf')"
+          >
             <CustomText color="none">Download Resume</CustomText>
           </CustomButton>
         </div>

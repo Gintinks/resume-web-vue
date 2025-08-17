@@ -1,0 +1,51 @@
+@reference "tailwindcss";
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Layout */
+.projects-header {
+  @apply max-w-2xl text-center justify-self-center;
+}
+.projects-list {
+  @apply flex flex-wrap justify-center gap-6 mt-6;
+}
+.project-card {
+  @apply basis-full md:basis-[calc(50%-1.125rem)] lg:basis-[calc(33.333%-1.125rem)]
+    bg-gray-100/60 rounded-md shadow-md cursor-pointer hover:scale-102 transform transition duration-300;
+}
+.project-content {
+  @apply flex flex-col gap-4 p-4 md:p-6;
+}
+
+/* Card Parts */
+.project-thumbnail {
+  @apply w-full h-50 object-cover rounded-t-md;
+}
+.project-header {
+  @apply flex gap-2 items-center;
+}
+.project-icon {
+  @apply w-8 h-8 rounded-lg;
+}
+.project-description {
+  @apply line-clamp-2 text-ellipsis text-justify;
+}
+.project-tags {
+  @apply flex flex-wrap gap-2;
+}
+.project-tag {
+  @apply bg-red-400/20 rounded-xl px-2 text-red-400;
+}
+
+/* Show More */
+.projects-show-more {
+  @apply flex justify-center mt-6;
+}
