@@ -25,7 +25,7 @@ const baseClasses = 'rounded-md text-base font-medium transition-colors border-1
 const presetClasses: Record<string, string> = {
   primary: 'bg-red-500 text-white hover:bg-red-500/80',
   secondary: 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white',
-  cancel: 'bg-gray-200 text-white border-gray-500',
+  cancel: 'bg-gray-200 text-black border-gray-300',
 }
 
 const sizeClasses: Record<string, string> = {

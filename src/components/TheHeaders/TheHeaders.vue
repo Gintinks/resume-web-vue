@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import CustomText from '@/components/CustomText/CustomText.vue'
+import Helper from '@/utils/helper'
 
-const isDark = ref(localStorage.getItem('theme') === 'dark' ? true : false)
+const isDark = ref(localStorage.getItem('theme') === 'dark')
 const isMenuOpen = ref(false)
 
 function toggleDarkMode() {
@@ -15,45 +16,42 @@ function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value
 }
 
-const scrollToSection = (id: string) => {
-  console.log('rans')
+const navItems = [
+  { label: 'Home', target: 'home-section' },
+  { label: 'Projects', target: 'projects-section' },
+  { label: 'Experiences', target: 'experiences-section' },
+  { label: 'Contact', target: 'contact-section' },
+]
 
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
+function handleNavClick(target: string) {
+  Helper.scrollToSection(target)
+  isMenuOpen.value = false
 }
 </script>
 
 <template>
-  <header class="pt-4 bg-white dark:bg-gray-800">
+  <header class="header">
     <div class="container container-header">
-      <!-- Title -->
       <div class="flex-1">
         <CustomText preset="headline-6-bold">Daniel's Resume</CustomText>
       </div>
-      <!-- Navigation -->
+
       <nav class="navigation-wrapper">
-        <CustomText @click="scrollToSection('home-section')" clickable>Home</CustomText>
-        <CustomText @click="scrollToSection('projects-section')" clickable>Projects</CustomText>
-        <CustomText @click="scrollToSection('experiences-section')" clickable
-          >Experiences</CustomText
+        <CustomText
+          v-for="item in navItems"
+          :key="item.target"
+          clickable
+          @click="handleNavClick(item.target)"
         >
-        <CustomText @click="scrollToSection('contact-section')" clickable>Contact</CustomText>
+          {{ item.label }}
+        </CustomText>
       </nav>
-      <!-- Toggle Button -->
+
       <div class="flex justify-end sm:flex-1">
         <div class="gap-2 flex">
-          <!-- TODO: button for dark mode toggle (disabled for now)-->
+          <!-- Dark mode toggle -->
           <div>
-            <button
-              @click="toggleDarkMode"
-              class="hidden w-9 h-9 rounded shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
-              aria-label="Toggle dark mode"
-            >
+            <button @click="toggleDarkMode" class="dark-toggle-btn" aria-label="Toggle dark mode">
               <span v-if="isDark" class="text-yellow-400">🌙</span>
               <span v-else class="text-gray-800">☀️</span>
             </button>
@@ -95,18 +93,18 @@ const scrollToSection = (id: string) => {
         </div>
       </div>
     </div>
-    <!-- Dropdown menu for mobile with transition -->
+
+    <!-- Mobile dropdown -->
     <Transition name="dropdown">
-      <div
-        v-if="isMenuOpen"
-        class="md:hidden bg-white dark:bg-gray-800 shadow-lg rounded mt-2 px-4 py-2 flex flex-col gap-2 border-t border-gray-100"
-      >
-        <CustomText @click="scrollToSection('home-section')" clickable>Home</CustomText>
-        <CustomText @click="scrollToSection('projects-section')" clickable>Projects</CustomText>
-        <CustomText @click="scrollToSection('experiences-section')" clickable
-          >Experiences</CustomText
+      <div v-if="isMenuOpen" class="dropdown-menu">
+        <CustomText
+          v-for="item in navItems"
+          :key="item.target"
+          clickable
+          @click="handleNavClick(item.target)"
         >
-        <CustomText @click="scrollToSection('contact-section')" clickable>Contact</CustomText>
+          {{ item.label }}
+        </CustomText>
       </div>
     </Transition>
   </header>
